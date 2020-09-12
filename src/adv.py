@@ -70,11 +70,11 @@ item = {
 
 # Link item to room
 
-room['outside'].items_loc = [item['anthrax']]
-room['foyer'].items_loc = [item['sword']]
-room['overlook'].items_loc = [item['bazooka']]
-room['narrow'].items_loc = [item['gun']]
-room['treasure'].items_loc = [item['diamond']]
+room['outside'].room_items = [item['anthrax']]
+room['foyer'].room_items = [item['sword']]
+room['overlook'].room_items =[item['bazooka']]
+room['narrow'].room_items = [item['gun']]
+room['treasure'].room_items = [item['diamond']]
 
 
 #
@@ -100,9 +100,13 @@ room['treasure'].items_loc = [item['diamond']]
 def new_player():
     Player.name = "You"
     Player.current_room = room['outside']
-    print(f'{Player.name} you are located {Player.current_room}')
+    Player.player_items = [item['anthrax']]
+    print(f'{Player.name} you are located {Player.current_room} with {Player.player_items}')
+
 
 new_player()
+
+# Player("Bob", room['outside'], [])
 
 
 def player_options():
@@ -114,7 +118,7 @@ def player_options():
                 print(f'Ran into wall please choose a different direction')
             else:
                 Player.current_room = Player.current_room.n_to
-                print(Player.current_room)
+                print(f'{Player.current_room}')
             player_options()
                     
         elif direction_choice == 's':
@@ -140,7 +144,18 @@ def player_options():
                 Player.current_room = Player.current_room.w_to
                 print(Player.current_room)
             player_options()
+        elif direction_choice == 'i' or 'inventory':
+            if Player.player_items == []:
+                print(f'No items in your inventory')
+            else:
+                length = len(Player.player_items)
+                i = 0
 
+                while i < length:
+                    print(Player.player_items[i])
+                    i += 1
+            player_options()
+            
         elif direction_choice == 'q':
             print('Thanks for playing.')
             #add break point    

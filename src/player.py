@@ -2,13 +2,13 @@
 # currently.
 
 class Player:
-    def __init__(self, name="player1", current_room="outside", items=[]):
+    def __init__(self, name="player1", current_room="outside", player_items=[]):
         self.name = name
         self.current_room = current_room
-        self.items = items
+        self.player_items = player_items
 
     def __str__(self):
-        return f'{self.name} is in the {self.current_room} with {self.items}'
+        return f'{self.name} is in the {self.current_room} with {self.player_items}'
 
 #     def print_location:
 #         print(f'You are in {self.current_room}')
@@ -16,7 +16,7 @@ class Player:
 #     def print_inventory:
 #         print(f'You have {self.items} in your inventory')
 
-#     def add_item:
-        # pass
-#     def drop_item:
-        # pass
+    def add_item(self):
+        pass
+    def drop_item(self):
+        pass
